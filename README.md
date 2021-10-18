@@ -1,9 +1,10 @@
 # POKEDEX
 
+# WIREFRAME (https://wireframe.cc/fV8Swd)
+
 Nome dos integrantes: 
-- Pessoa 1
-- Pessoa 2
-- Pessoa 3
+- Matheus Schade
+- Rafael Flores
 
 Link do Surge: www.link.com.br
 
