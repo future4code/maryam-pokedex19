@@ -16,7 +16,7 @@ p {
 button {
     margin: 0px 3vw ;
     width: 100px;
-    height: 2em;
+    height: 3em;
     border: 0px solid grey;
     border-radius: 10px;
     cursor: pointer;
