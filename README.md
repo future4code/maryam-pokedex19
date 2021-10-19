@@ -4,7 +4,7 @@
 
 Nome dos integrantes: 
 - Matheus Schade
-- Rafael Flores
+- Luis Henrique Fernandes de Faria
 
 Link do Surge: www.link.com.br
 
