@@ -39,7 +39,13 @@ const GlobalState = (props) => {
     }
 
     const removeFromPokedex = (id) => {
+        const addPoke = pokedex.filter(item => item.id === id) 
         const removePoke = pokedex.filter(item => item.id !== id) 
+        setPokedex(removePoke)
+
+        const newHome = [...detailPokes, addPoke[0] ]
+        setDetailPokes(newHome)
+
     }
 
     const addToPokedex = (id) => {
@@ -58,7 +64,7 @@ const GlobalState = (props) => {
     }
 
     return (
-        <GlobalContext.Provider value={{ pokedex, setPokedex, detailPokes, setDetailPokes, addToPokedex, getDetailPokes, pokes, isLoadingPokes, errorRequest, getData }}>
+        <GlobalContext.Provider value={{ pokedex, setPokedex, detailPokes, setDetailPokes, addToPokedex, getDetailPokes, pokes, isLoadingPokes, errorRequest, getData, removeFromPokedex }}>
             {props.children}
         </GlobalContext.Provider>
     )

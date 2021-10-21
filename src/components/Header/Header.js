@@ -19,6 +19,19 @@ const Header = (props) => {
         )
     }
 
+    if (props.pokedex) {
+        return (
+            <Head>
+
+                <button onClick={() => goBack(history)}>Voltar</button>
+                <p>Pokedex</p>
+                <div></div>
+                
+
+            </Head>
+        )
+    }
+
     return (
         <Head>
 
