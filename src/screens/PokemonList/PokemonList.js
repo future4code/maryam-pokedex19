@@ -7,20 +7,37 @@ import { Card, GridCard, ContainerButtons } from "./styled"
 import { useHistory } from "react-router-dom"
 
 const PokemonList = () => {
-    const history = useHistory()
+    const [pokedex, setPokedex] = useState([])
     const [detailPokes, setDetailPokes] = useState()
 
     const [pokes, isLoadingPokes, errorRequest, getData] = useRequestData(
         `${urlBase}`)
 
+    const history = useHistory()
+
+    const addToPokedex = (id) => {
+
+        const newPokeToPokedex = detailPokes.filter((item) => {
+            return id === item.id
+        })
+
+        const newPokedex = [...pokedex, newPokeToPokedex]
+        setPokedex(newPokedex)
+        console.log(`POKE DA POKEDEX`, pokedex)
+
+        const newDetailPokesList = detailPokes.filter((item) => {
+            return id !== item.id
+        })
+
+        setDetailPokes(newDetailPokesList)
+    }
+
     const goToDetailPage = (id) => {
         history.push(`/pokemon/${id}`)
-        console.log(`Clicado!!!`)
     }
 
     const getDetailPokes = () => {
         const newList = [];
-        // const orderedList = []
 
         for (let i = 1; i < 21; i++) {
             axios.get(`${urlBase}/${i}`)
@@ -45,6 +62,7 @@ const PokemonList = () => {
                 });
         }
 
+
         // pokes.length > 10 && pokes.forEach((item) => {
         //     axios.get(`${urlBase}/${item.name}`)
         //         .then((res) => {
@@ -61,6 +79,10 @@ const PokemonList = () => {
         getDetailPokes()
     }, [pokes])
 
+    String.prototype.capitalize = function () {
+        return this.charAt(0).toUpperCase() + this.substr(1);
+    }
+
     return (
         <div>
 
@@ -75,7 +97,7 @@ const PokemonList = () => {
                     <img src={item.sprites.versions['generation-v']['black-white'].animated.front_default} />
                     <h2>{item.name} </h2>
                     <ContainerButtons>
-                        <button>Adicionar à Pokedex</button>
+                        <button onClick={() => addToPokedex(item.id)}>Adicionar à Pokedex</button>
                         <button onClick={() => goToDetailPage(item.id)}>Ver detalhes</button>
                     </ContainerButtons>
                 </Card>
