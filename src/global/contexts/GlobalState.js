@@ -38,15 +38,18 @@ const GlobalState = (props) => {
         }
     }
 
+    const removeFromPokedex = (id) => {
+        const removePoke = pokedex.filter(item => item.id !== id) 
+    }
 
     const addToPokedex = (id) => {
         const newPokeToPokedex = detailPokes.filter((item) => {
             return id === item.id
         })
 
-        const newPokedex = [...pokedex, newPokeToPokedex]
+        const newPokedex = [...pokedex, newPokeToPokedex[0]] 
         setPokedex(newPokedex)
-        console.log(`POKE DA POKEDEX`, pokedex)
+        console.log(`POKE DA POKEDEX`, newPokedex)
 
         const newDetailPokesList = detailPokes.filter((item) => {
             return id !== item.id
