@@ -5,6 +5,7 @@ import PokemonDetail from "../screens/PokemonDetail/PokemonDetail.js"
 import PokemonList from "../screens/PokemonList/PokemonList"
 
 const Router = () => {
+
     return (
         <BrowserRouter>
             <Switch>
