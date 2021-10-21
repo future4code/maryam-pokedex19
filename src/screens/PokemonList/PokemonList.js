@@ -7,11 +7,30 @@ import { Card, GridCard, ContainerButtons } from "./styled"
 import { useHistory } from "react-router-dom"
 
 const PokemonList = () => {
-    const history = useHistory()
-    const [detailPokes, setDetailPokes] = useState()
+    const [detailPokes, setInfoPokes] = useState([])
+    const [pokedex, setPokedex] = useState([])
 
     const [pokes, isLoadingPokes, errorRequest, getData] = useRequestData(
         `${urlBase}`)
+
+    const history = useHistory()
+
+    const addToPokedex = (id) => {
+
+        const newPokeToPokedex = detailPokes.filter((item) => {
+            return id === item.id
+        })
+
+        const newPokedex = [...pokedex, newPokeToPokedex]
+        setPokedex(newPokedex)
+        console.log(`POKE DA POKEDEX`, pokedex)
+
+        const newDetailPokesList = detailPokes.filter((item) => {
+            return id !== item.id
+        })
+
+        setInfoPokes(newDetailPokesList)
+    }
 
     const goToDetailPage = (id) => {
         history.push(`/pokemon/${id}`)
@@ -20,14 +39,24 @@ const PokemonList = () => {
 
     const getDetailPokes = () => {
         const newList = [];
-        // const orderedList = []
+
+        // pokes.forEach((item) => {
+        //     axios.get(item.url)
+        //         .then((response) => {
+        //             newList.push(response.data);
+        //             if (newList.length === 20) {
+        //                 const orderedList = newList.sort((a, b) => {
+        //                     return a.id - b.id;
+        //                 });
+        //                 setInfoPokes(orderedList);
+        //             }
+        //         })
+        //         .catch((error) => console.log(error.message));
+        // });
 
         for (let i = 1; i < 21; i++) {
             axios.get(`${urlBase}/${i}`)
                 .then((res) => {
-                    // newList[i - 1].push(res.data)
-                    // setDetailPokes(newList)
-
                     newList[i - 1] = {
                         id: res.data.id,
                         name: res.data.name,
@@ -37,30 +66,23 @@ const PokemonList = () => {
                         sprites: res.data.sprites,
                     };
                     if (newList.length === 20) {
-                        setDetailPokes(newList);
+                        setInfoPokes(newList);
                     }
                 })
                 .catch((err) => {
                     console.log("Erro Catch da requisição", err)
                 });
         }
-
-        // pokes.length > 10 && pokes.forEach((item) => {
-        //     axios.get(`${urlBase}/${item.name}`)
-        //         .then((res) => {
-        //             newList.push(res.data)
-        //             setDetailPokes(newList)
-        //         })
-        //         .catch((err) => {
-        //             console.log("Erro Catch da requisição", err)
-        //         });
-        // })
     }
 
     useEffect(() => {
         getDetailPokes()
     }, [pokes])
 
+    String.prototype.capitalize = function() {
+        return this.charAt(0).toUpperCase() + this.substr(1);
+    }
+    
     return (
         <div>
 
@@ -73,9 +95,9 @@ const PokemonList = () => {
 
                 {detailPokes && detailPokes.map((item) => <Card key={item.id}>
                     <img src={item.sprites.versions['generation-v']['black-white'].animated.front_default} />
-                    <h2>{item.name} </h2>
+                    <h2>{item.name.capitalize()}</h2>
                     <ContainerButtons>
-                        <button>Adicionar à Pokedex</button>
+                        <button onClick={() => addToPokedex(item.id)}>Adicionar à Pokedex</button>
                         <button onClick={() => goToDetailPage(item.id)}>Ver detalhes</button>
                     </ContainerButtons>
                 </Card>
