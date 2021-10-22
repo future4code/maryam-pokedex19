@@ -9,43 +9,33 @@ const GlobalState = (props) => {
     const [detailPokes, setDetailPokes] = useState()
 
     const [pokes, isLoadingPokes, errorRequest, getData] = useRequestData(
-        `${urlBase}`)
+        `${urlBase}?limit=20`)
 
 
     const getDetailPokes = () => {
         const newList = [];
-
-        for (let i = 1; i < 21; i++) {
-            axios.get(`${urlBase}/${i}`)
+        pokes.forEach((item) => {
+            axios.get(`${urlBase}/${item.name}`)
                 .then((res) => {
-                    newList[i - 1] = {
-                        id: res.data.id,
-                        name: res.data.name,
-                        status: res.data.stats,
-                        moves: res.data.moves,
-                        types: res.data.types,
-                        sprites: res.data.sprites,
-                    };
+                    newList.push(res.data)
+                    console.log(res.data)
                     if (newList.length === 20) {
-                        setDetailPokes(newList);
+                        const orderedList = newList.sort((a, b) => {
+                            return a.id - b.id
+                        })
+                        setDetailPokes(orderedList)
                     }
-                    console.log(`OK`)
                 })
-
-                .catch((err) => {
-                    console.log("Erro Catch da requisição", err)
-                });
-        }
+        });
     }
 
     const removeFromPokedex = (id) => {
-        const addPoke = pokedex.filter(item => item.id === id) 
-        const removePoke = pokedex.filter(item => item.id !== id) 
+        const addPoke = pokedex.filter(item => item.id === id)
+        const removePoke = pokedex.filter(item => item.id !== id)
         setPokedex(removePoke)
 
-        const newHome = [...detailPokes, addPoke[0] ]
+        const newHome = [...detailPokes, addPoke[0]]
         setDetailPokes(newHome)
-
     }
 
     const addToPokedex = (id) => {
@@ -53,7 +43,7 @@ const GlobalState = (props) => {
             return id === item.id
         })
 
-        const newPokedex = [...pokedex, newPokeToPokedex[0]] 
+        const newPokedex = [...pokedex, newPokeToPokedex[0]]
         setPokedex(newPokedex)
         console.log(`POKE DA POKEDEX`, newPokedex)
 
