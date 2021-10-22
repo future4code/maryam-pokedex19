@@ -1,17 +1,16 @@
 # POKEDEX
 
-# WIREFRAME (https://wireframe.cc/fV8Swd)
+## WIREFRAME (https://wireframe.cc/fV8Swd)
 
 Nome dos integrantes: 
 - Matheus Schade
 - Luis Henrique Fernandes de Faria
 
-Link do Surge: www.link.com.br
+Link do Surge: (ubiquitous-vase.surge.sh)
 
 O que funciona:
-- Item 1
-- Item 2
+- Todas as funções implementadas, exceto a de adicionar/remover pokes para a pokedex direto da tela de detalhes.
 
 O que não funciona: 
-- Item 3
-- Item 4
+- adicionar/remover pokes para a pokedex direto da tela de detalhes.
+
