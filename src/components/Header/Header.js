@@ -7,18 +7,45 @@ import { GlobalContext } from "../../global/contexts/GlobalContext";
 const Header = (props) => {
     const history = useHistory();
 
-    const { addToPokedex, removeFromPokedex } = useContext(GlobalContext);
+    const { addToPokedex, removeFromPokedex, pokedex } = useContext(GlobalContext);
 
     if (props.detalhes) {
-        return (
-            <Head>
+        // return (
+        //     <Head>
 
-                <button onClick={() => goBack(history)}>Voltar</button>
-                <p>{props.pokeName}</p>
-                <button style={{ width: "auto" }} onClick={() => goToPokedex(history)}>Adicionar/Remover Pokedex</button>
+        //         <button onClick={() => goBack(history)}>Voltar</button>
+        //         <p>{props.pokeName}</p>
+        //         <button style={{ width: "auto" }} onClick={() => goToPokedex(history)}>Adicionar/Remover Pokedex</button>
 
-            </Head>
-        )
+        //     </Head>
+        // )
+        let i = 0
+
+        while (pokedex.length - 1 >= i) {
+
+
+            if (props.pokeName === pokedex[i].name) {
+                return (
+                    <Head>
+                        <button onClick={() => goBack(history)}>Voltar</button>
+                        <p>{props.pokeName}</p>
+                        <button style={{ width: "auto" }} onClick={() => goToPokedex(history)}>Remover da Pokedex</button>
+                    </Head>
+                )
+            } else {
+                return (
+                    <Head>
+                        <button onClick={() => goBack(history)}>Voltar</button>
+                        <p>{props.pokeName}</p>
+                        <button style={{ width: "auto" }} onClick={() => goToPokedex(history)}>Adicionar para a Pokedex</button>
+                    </Head>
+                )
+            }
+            i++
+        }
+
+
+
     }
 
     if (props.pokedex) {

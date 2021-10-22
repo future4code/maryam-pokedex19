@@ -34,9 +34,7 @@ const GlobalState = (props) => {
         const addPoke = pokedex.filter(item => item.id === id)
         const removePoke = pokedex.filter(item => item.id !== id)
         setPokedex(removePoke)
-
         const newHome = [...detailPokes, addPoke[0]]
-
         const orderedList = newHome.sort((a, b) => {
             return a.id - b.id
         })
