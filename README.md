@@ -6,7 +6,7 @@ Nome dos integrantes:
 - Matheus Schade
 - Luis Henrique Fernandes de Faria
 
-Link do Surge: (ubiquitous-vase.surge.sh)
+Link do Surge: (https://ubiquitous-vase.surge.sh)
 
 O que funciona:
 - Todas as funções implementadas, exceto a de adicionar/remover pokes para a pokedex direto da tela de detalhes.
