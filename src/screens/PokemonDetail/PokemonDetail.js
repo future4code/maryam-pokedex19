@@ -29,7 +29,7 @@ const PokemonDetail = (id) => {
 
     return (
         <div>
-            <Header detalhes={true} pokeName={chosenPoke.name} />
+            <Header detalhes={true} pokeName={chosenPoke.name} id={params.id}/>
 
             {!isLoading ? (
                 <MainContainer>
