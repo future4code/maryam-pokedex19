@@ -9,42 +9,51 @@ const Header = (props) => {
 
     const { addToPokedex, removeFromPokedex, pokedex } = useContext(GlobalContext);
 
-    if (props.detalhes) {
+
+    if (props.detail) {
         // return (
         //     <Head>
-
         //         <button onClick={() => goBack(history)}>Voltar</button>
         //         <p>{props.pokeName}</p>
         //         <button style={{ width: "auto" }} onClick={() => goToPokedex(history)}>Adicionar/Remover Pokedex</button>
-
         //     </Head>
         // )
-        let i = 0
+        if (pokedex.length === 0) {
 
-        while (pokedex.length - 1 >= i) {
+            return (
+                <Head>
+                    <button onClick={() => goBack(history)}>Voltar</button>
+                    <p>{props.pokeName}</p>
+                    <button style={{ width: "auto" }}>Adicionar para a Pokedex</button>
+                </Head>
+
+            )
+        } else {
+            let i = 0
+
+            while (pokedex.length - 1 >= i) {
 
 
-            if (props.pokeName === pokedex[i].name) {
-                return (
-                    <Head>
-                        <button onClick={() => goBack(history)}>Voltar</button>
-                        <p>{props.pokeName}</p>
-                        <button style={{ width: "auto" }} onClick={() => goToPokedex(history)}>Remover da Pokedex</button>
-                    </Head>
-                )
-            } else {
-                return (
-                    <Head>
-                        <button onClick={() => goBack(history)}>Voltar</button>
-                        <p>{props.pokeName}</p>
-                        <button style={{ width: "auto" }} onClick={() => goToPokedex(history)}>Adicionar para a Pokedex</button>
-                    </Head>
-                )
+                if (props.pokeName === pokedex[i].name) {
+                    return (
+                        <Head>
+                            <button onClick={() => goBack(history)}>Voltar</button>
+                            <p>{props.pokeName}</p>
+                            <button style={{ width: "auto" }} >Remover da Pokedex</button>
+                        </Head>
+                    )
+                } else {
+                    return (
+                        <Head>
+                            <button onClick={() => goBack(history)}>Voltar</button>
+                            <p>{props.pokeName}</p>
+                            <button style={{ width: "auto" }}>Adicionar para a Pokedex</button>
+                        </Head>
+                    )
+                }
+                i++
             }
-            i++
         }
-
-
 
     }
 
@@ -67,6 +76,7 @@ const Header = (props) => {
             <button onClick={() => goBack(history)}>Voltar</button>
             <p>infoPokes.com</p>
             <button onClick={() => goToPokedex(history)}>Pokedex</button>
+
 
         </Head>
     )
