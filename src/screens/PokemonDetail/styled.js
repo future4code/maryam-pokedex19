@@ -26,6 +26,8 @@ export const PowersPoke = styled.div`
     flex-direction: column;
     justify-content: space-around;
     padding-left: 20px;
+    border: 1px solid ${CardColor};
+    border-radius: 10px;
 `
 export const AttacksPoke = styled.div`
     align-self: center;
@@ -39,6 +41,8 @@ export const AttacksPoke = styled.div`
 export const PokeImg = styled.img`
     height: 25vh;
     background: ${CardColor};
+    border: 1px solid ${CardColor};
+    border-radius: 10px;
 `
 export const PokeTypes = styled.div`
     background: ${CardColor};
@@ -46,6 +50,8 @@ export const PokeTypes = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
+    border: 1px solid ${CardColor};
+    border-radius: 10px;
 `
 export const PokeAttacks = styled.div`
     background: ${CardColor};
@@ -54,5 +60,7 @@ export const PokeAttacks = styled.div`
     flex-direction: column;
     justify-content: space-around;
     padding-left: 20px;
+    border: 1px solid ${CardColor};
+    border-radius: 10px;
 `
 

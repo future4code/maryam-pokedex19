@@ -16,14 +16,10 @@ const PokemonList = () => {
         history.push(`/pokemon/${id}`)
     }
 
-    useEffect(() => {
-        getDetailPokes()
-    }, [pokes])
-
     String.prototype.capitalize = function () {
         return this.charAt(0).toUpperCase() + this.substr(1);
     }
-
+    
     return (
         <div>
 

@@ -3,13 +3,15 @@ import React, { useState } from "react"
 import { GlobalContext } from "./GlobalContext"
 import { useRequestData } from "../../components/hooks/useRequestData";
 import { urlBase } from "../../constants/url.js"
+import { useEffect } from "react"
 
 const GlobalState = (props) => {
     const [pokedex, setPokedex] = useState([])
     const [detailPokes, setDetailPokes] = useState()
 
+
     const [pokes, isLoadingPokes, errorRequest, getData] = useRequestData(
-        `${urlBase}?limit=20`)
+        `${urlBase}?limit=151`)
 
 
     const getDetailPokes = () => {
@@ -18,7 +20,6 @@ const GlobalState = (props) => {
             axios.get(`${urlBase}/${item.name}`)
                 .then((res) => {
                     newList.push(res.data)
-                    console.log(res.data)
                     if (newList.length === 20) {
                         const orderedList = newList.sort((a, b) => {
                             return a.id - b.id
@@ -33,9 +34,11 @@ const GlobalState = (props) => {
         const addPoke = pokedex.filter(item => item.id === id)
         const removePoke = pokedex.filter(item => item.id !== id)
         setPokedex(removePoke)
-
         const newHome = [...detailPokes, addPoke[0]]
-        setDetailPokes(newHome)
+        const orderedList = newHome.sort((a, b) => {
+            return a.id - b.id
+        })
+        setDetailPokes(orderedList)
     }
 
     const addToPokedex = (id) => {
@@ -45,13 +48,16 @@ const GlobalState = (props) => {
 
         const newPokedex = [...pokedex, newPokeToPokedex[0]]
         setPokedex(newPokedex)
-        console.log(`POKE DA POKEDEX`, newPokedex)
 
         const newDetailPokesList = detailPokes.filter((item) => {
             return id !== item.id
         })
         setDetailPokes(newDetailPokesList)
     }
+
+    useEffect(() => {
+        getDetailPokes()
+    }, [pokes])
 
     return (
         <GlobalContext.Provider value={{ pokedex, setPokedex, detailPokes, setDetailPokes, addToPokedex, getDetailPokes, pokes, isLoadingPokes, errorRequest, getData, removeFromPokedex }}>
