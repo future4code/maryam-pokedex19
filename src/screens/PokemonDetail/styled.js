@@ -45,6 +45,7 @@ export const PokeTypes = styled.div`
     height: 10%;
     display: flex;
     justify-content: space-around;
+    align-items: center;
 `
 export const PokeAttacks = styled.div`
     background: ${CardColor};

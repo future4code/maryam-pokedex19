@@ -8,61 +8,13 @@ import { useHistory } from "react-router-dom"
 import { GlobalContext } from "../../global/contexts/GlobalContext";
 
 const PokemonList = () => {
-    // const [pokedex, setPokedex] = useState([])
-    // const [detailPokes, setDetailPokes] = useState()
-
-    // const [pokes, isLoadingPokes, errorRequest, getData] = useRequestData(
-    //     `${urlBase}`)
-
     const history = useHistory()
-    const { pokedex, setPokedex, detailPokes, setDetailPokes, addToPokedex, 
+    const { pokedex, setPokedex, detailPokes, setDetailPokes, addToPokedex,
         getDetailPokes, pokes, isLoadingPokes, errorRequest, getData } = useContext(GlobalContext);
-
-
-    // const addToPokedex = (id) => {
-    //     const newPokeToPokedex = detailPokes.filter((item) => {
-    //         return id === item.id
-    //     })
-
-    //     const newPokedex = [...pokedex, newPokeToPokedex]
-    //     setPokedex(newPokedex)
-    //     console.log(`POKE DA POKEDEX`, pokedex)
-
-    //     const newDetailPokesList = detailPokes.filter((item) => {
-    //         return id !== item.id
-    //     })
-    //     setDetailPokes(newDetailPokesList)
-    // }
-
 
     const goToDetailPage = (id) => {
         history.push(`/pokemon/${id}`)
     }
-
-
-    // const getDetailPokes = () => {
-    //     const newList = [];
-
-    //     for (let i = 1; i < 21; i++) {
-    //         axios.get(`${urlBase}/${i}`)
-    //             .then((res) => {
-    //                 newList[i - 1] = {
-    //                     id: res.data.id,
-    //                     name: res.data.name,
-    //                     status: res.data.stats,
-    //                     moves: res.data.moves,
-    //                     types: res.data.types,
-    //                     sprites: res.data.sprites,
-    //                 };
-    //                 if (newList.length === 20) {
-    //                     setDetailPokes(newList);
-    //                 }
-    //             })
-    //             .catch((err) => {
-    //                 console.log("Erro Catch da requisição", err)
-    //             });
-    //     }
-    // }
 
     useEffect(() => {
         getDetailPokes()
@@ -78,9 +30,9 @@ const PokemonList = () => {
             <Header />
             <GridCard>
 
-                {/* {isLoadingPokes && <h2>Carregando</h2>}
+                {isLoadingPokes && <h2>Carregando</h2>}
                 {!isLoadingPokes && errorRequest && <p>{errorRequest.message} </p>}
-                {!isLoadingPokes && pokes && pokes.length === 0 && (<p> Não foi encontrado nenhum resultado </p>)} */}
+                {!isLoadingPokes && pokes && pokes.length === 0 && (<p> Não foi encontrado nenhum resultado </p>)}
 
                 {detailPokes && detailPokes.map((item) => <Card key={item.id}>
                     <img src={item.sprites.versions['generation-v']['black-white'].animated.front_default} />
