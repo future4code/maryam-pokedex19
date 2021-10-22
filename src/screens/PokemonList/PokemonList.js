@@ -16,39 +16,10 @@ const PokemonList = () => {
         history.push(`/pokemon/${id}`)
     }
 
-    
-
-    console.log(`detailPokes`, detailPokes)
-    console.log(`pokedex`, pokedex)
-
-    // if (detailPokes.length > 0) {
-    //     const ui = () => {
-
-    //         let i = 0
-
-    //         while (i <= detailPokes.length -1) {
-    //             let now = detailPokes[i].name
-    //             let n = 0
-    //             while (n <= pokedex.length) {
-    //                 if (now === pokedex[n].name) {
-    //                     detailPokes.splice(i, 1)
-    //                 }
-    //                 i++
-    //             }
-    //             i++
-    //         }
-    //     }
-    //     ui()
-    // }
-
-    console.log(`detailPokes`, detailPokes)
-
-
-
     String.prototype.capitalize = function () {
         return this.charAt(0).toUpperCase() + this.substr(1);
     }
-
+    
     return (
         <div>
 

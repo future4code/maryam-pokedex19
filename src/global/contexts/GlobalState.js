@@ -20,9 +20,7 @@ const GlobalState = (props) => {
             axios.get(`${urlBase}/${item.name}`)
                 .then((res) => {
                     newList.push(res.data)
-                    // console.log(res.data)
                     if (newList.length === 20) {
-
                         const orderedList = newList.sort((a, b) => {
                             return a.id - b.id
                         })
@@ -38,7 +36,11 @@ const GlobalState = (props) => {
         setPokedex(removePoke)
 
         const newHome = [...detailPokes, addPoke[0]]
-        setDetailPokes(newHome)
+
+        const orderedList = newHome.sort((a, b) => {
+            return a.id - b.id
+        })
+        setDetailPokes(orderedList)
     }
 
     const addToPokedex = (id) => {

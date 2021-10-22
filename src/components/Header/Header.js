@@ -1,11 +1,13 @@
 import { Head } from "./styled"
 import { useHistory } from "react-router-dom";
 import { goBack, goToPokedex } from "../../routes/coordinator"
-
-
+import { useContext } from "react"
+import { GlobalContext } from "../../global/contexts/GlobalContext";
 
 const Header = (props) => {
     const history = useHistory();
+
+    const { addToPokedex, removeFromPokedex } = useContext(GlobalContext);
 
     if (props.detalhes) {
         return (
@@ -26,7 +28,7 @@ const Header = (props) => {
                 <button onClick={() => goBack(history)}>Voltar</button>
                 <p>Pokedex</p>
                 <div></div>
-                
+
 
             </Head>
         )
