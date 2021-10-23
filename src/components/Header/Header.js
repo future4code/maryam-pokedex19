@@ -11,18 +11,6 @@ const Header = (props) => {
     useContext(GlobalContext);
 
   if (props.detalhes) {
-    // return (
-    //     <Head>
-
-    //         <button onClick={() => goBack(history)}>Voltar</button>
-    //         <p>{props.pokeName}</p>
-    //         <button style={{ width: "auto" }} onClick={() => goToPokedex(history)}>Adicionar/Remover Pokedex</button>
-
-    //     </Head>
-    // )
-    // let i = 0
-
-    // while (pokedex.length - 1 >= i) {
 
     return (
       <Head>
@@ -46,8 +34,6 @@ const Header = (props) => {
       </Head>
     );
 
-    // i++
-    // }
   }
 
   if (props.pokedex) {

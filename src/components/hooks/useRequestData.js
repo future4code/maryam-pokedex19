@@ -7,8 +7,6 @@ export const useRequestData = (url) => {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState()
 
-    // response.data.sprites.versions['generation-v']['black-white'].animated.front_default
-
     const getData = () => {
         setIsLoading(true)
         axios.get(urlBase)
