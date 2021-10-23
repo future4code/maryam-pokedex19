@@ -33,9 +33,6 @@ const Pokedex = () => {
             )}
             </GridCard>
             
-            
-
-
         </div>
     )
 }

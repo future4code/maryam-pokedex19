@@ -19,7 +19,6 @@ const PokemonDetail = (id) => {
             .then((response) => {
                 setChosenPoke(response.data)
                 setIsLoading(false)
-                console.log(response.data)
             }).catch((error) => {
                 alert(`Erro: `, error)
             })
