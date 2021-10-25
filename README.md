@@ -3,8 +3,8 @@
 ## WIREFRAME (https://wireframe.cc/fV8Swd)
 
 Nome dos integrantes: 
-- Matheus Schade
-- Luis Henrique Fernandes de Faria
+- Matheus Schade.
+- Luis Henrique Fernandes de Faria.
 
 Link do Surge: (https://ubiquitous-vase.surge.sh)
 
